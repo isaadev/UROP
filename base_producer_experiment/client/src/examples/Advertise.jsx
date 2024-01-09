@@ -25,7 +25,8 @@ import {
       [player.round.get("productionQuality"),
       player.round.get("advertisementQuality"),
       player.round.get("priceOfProduct"),
-      player.round.get("productionCost")])
+      player.round.get("productionCost"),
+      player.round.get("warrantChoice")])
 
       player.stage.set("submit", true);//player.stage.submit();
     }
@@ -41,12 +42,20 @@ import {
     function handleAdverisementChoice(e, advertisementQuality) {
       player.round.set("advertisementQuality", advertisementQuality);
       console.log("Saved advertisement quality to player.round object: ", advertisementQuality);
+
     }
 
     function handlePriceChoice(e, priceOfProduct) {
       player.round.set("priceOfProduct", priceOfProduct);
       console.log("Saved priceOfProduct to player.round object: ", priceOfProduct);
     }
+
+    // handle warrant choice, yes or no
+    function handleWarrantChoice(e, warrantChoice) {
+      player.round.set("warrantChoice", warrantChoice);
+      console.log("Saved warrantChoice to player.round object: ", warrantChoice);
+    }
+
   
     const isResultStage = stage.get("name") === "result";
   
@@ -120,6 +129,17 @@ import {
           <PriceButton text={'$15'} on_button_click={(e) => handlePriceChoice(e, 15)}></PriceButton>
           </div>
           <ProfitMarginCalculation producerPlayer = {player}/>
+        <div>
+          <br/><br/>
+          <h1><strong>Choose if you want to warrant</strong></h1>
+          <br/><br/>
+          <p>There will be a $100 cost to do so.</p>
+          <br/><br/>
+          <div className="flex justify-center space-x-4"> 
+            <WarrantButton text={'Warrant'} warrantChoice={'Yes'} on_button_click={(e) => handleWarrantChoice(e, "Yes")}></WarrantButton>
+            <WarrantButton text={'Do not warrant'} warrantChoice={'No'} on_button_click={(e) => handleWarrantChoice(e, "No")}></WarrantButton> 
+          </div>
+        </div>
 
           <br/><br/>
             <NextRoundButton on_button_click={(e) => handleSubmit(e)}/>
@@ -225,5 +245,14 @@ import {
         <h1><p>This gives a <b>profit of  ${profit}</b> per product sold.</p></h1>
 
       </div>
+    )
+  }
+
+ 
+  function WarrantButton({text, warrantChoice, on_button_click}){
+    return(
+      <Button handleClick={on_button_click} >
+           {text}
+            </Button>
     )
   }
