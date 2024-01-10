@@ -16,18 +16,20 @@ export function SalesResults({roundNumber}) {
   const warrantChoice = player.get(roundNumberText.concat("_choices"))[4];
 
   let warrantPrice = 0
+  let randomNum;
+  let playerWarrantChallenge;
+  // if warrantchoice is yes, then we generate number to see if player is challenged
+  // if not, then player cannot challenge
   if (warrantChoice === 'Yes') {
     warrantPrice = 100
-  } // else warrantPrice = 0
-  
-  let playerWarrantChallenge;
-  // SET playerWarrantChallenge TO TRUE WITH 0.5 PROBABILITY
-  const randomNum = Math.random()
-  if (randomNum > 0.5) {
-    playerWarrantChallenge = true
+     randomNum = Math.random()
+    if (randomNum > 0.5 ) {
+      playerWarrantChallenge = true
   } else {
     playerWarrantChallenge = false
-  }
+  } // else warrantPrice = 0
+  
+
 
   let imageUrl = "";
   //console.log('roundNumberText', roundNumberText)
@@ -57,49 +59,203 @@ export function SalesResults({roundNumber}) {
 
 
   const salesCount = numBuyers * (priceOfProduct - productionCost);
-  const finalScore = currentScore + salesCount - warrantPrice
+  const finalScore = currentScore + salesCount - warrantPrice;
+
 
   function handleSubmit() {
     console.log('Moving on from results round');
     player.stage.set("submit", true);
     player.set("score", finalScore);
   }
-  
-  return (
-    <div className="mt-3 sm:mt-5 p-20">
-      <h1 className="text-lg leading-6 font-medium text-gray-900">
-        Sales
-      </h1>
-      <div className="text-lg mt-2 mb-6">
-        {/* <p className="text-sm text-gray-500"> */}
-        <p>
-          You chose to produce a <b>{productionQuality}</b> quality product.
-        </p>
-        <p>
-          You chose to advertise it as a <b>{advertisementQuality}</b> quality product.
-        You sold it at a price of <b>${priceOfProduct}</b>.
-        <br /> <br />
-        </p>
+  if (warrantChoice === 'Yes' && playerWarrantChallenge === true) {
+    // if the qualities are equal
+    if (productionQuality === advertisementQuality) {
+      return (
+        <div className="mt-3 sm:mt-5 p-20">
+          <h1 className="text-lg leading-6 font-medium text-gray-900">
+            Sales
+          </h1>
+          <div className="text-lg mt-2 mb-6">
+            {/* <p className="text-sm text-gray-500"> */}
+            <p>
+              You chose to produce a <b>{productionQuality}</b> quality product.
+            </p>
+            <p>
+              You chose to advertise it as a <b>{advertisementQuality}</b> quality product. You sold it at a price of <b>${priceOfProduct}</b>.
+            <br /> <br />
+            </p>
 
-        <img src={imageUrl} alt="Toothpaste Standard" width="250" height="250"/>
+            <img src={imageUrl} alt="Toothpaste Standard" width="250" height="250"/>
+
+            <p>
+              It was advertised to an audience of 100 users, and {numBuyers} users bought your product.
+            </p>
+            <p> 
+              You earned ${priceOfProduct - productionCost} per product x {numBuyers} units sold = {salesCount} points in sales.
+            </p><br/>
+            <p> Your score for this round is: {salesCount} </p>
+            <p> Your total score is: {salesCount + currentScore} </p><br/>
+            <p> 
+              Click to proceed to the next round to sell products in this marketplace.
+            </p>
+          </div>
+          <Button handleClick={handleSubmit} primary>
+            I'm done!
+          </Button>
+        </div>
+      );
+    } else if (productionQuality === 'high' && advertisementQuality === 'low') {
+      return (
+        <div className="mt-3 sm:mt-5 p-20">
+          <h1 className="text-lg leading-6 font-medium text-gray-900">
+            Sales
+          </h1>
+          <div className="text-lg mt-2 mb-6">
+            {/* <p className="text-sm text-gray-500"> */}
+            <p>
+              You chose to produce a <b>{productionQuality}</b> quality product.
+            </p>
+            <p>
+              You chose to advertise it as a <b>{advertisementQuality}</b> quality product. You sold it at a price of <b>${priceOfProduct}</b>.
+            <br /> <br />
+            </p>
+
+            <img src={imageUrl} alt="Toothpaste Standard" width="250" height="250"/>
+
+            <p>
+              It was advertised to an audience of 100 users, and {numBuyers} users bought your product.
+            </p>
+            <p> 
+              You earned ${priceOfProduct - productionCost} per product x {numBuyers} units sold = {salesCount} points in sales.
+            </p><br/>
+            <p> Your score for this round is: {salesCount} </p>
+            <p> Your total score is: {salesCount + currentScore} </p><br/>
+            <p> 
+              Click to proceed to the next round to sell products in this marketplace.
+            </p>
+          </div>
+          <Button handleClick={handleSubmit} primary>
+            I'm done!
+          </Button>
+        </div>
+      );
+    } else if (productionQuality === 'low' && advertisementQuality === 'high') {
+      return (
+        <div className="mt-3 sm:mt-5 p-20">
+          <h1 className="text-lg leading-6 font-medium text-gray-900">
+            Sales
+          </h1>
+          <div className="text-lg mt-2 mb-6">
+            {/* <p className="text-sm text-gray-500"> */}
+            <p>
+              You chose to produce a <b>{productionQuality}</b> quality product.
+            </p>
+            <p>
+              You chose to advertise it as a <b>{advertisementQuality}</b> quality product. You sold it at a price of <b>${priceOfProduct}</b>.
+            <br /> <br />
+            </p>
+
+            <img src={imageUrl} alt="Toothpaste Standard" width="250" height="250"/>
+
+            <p>
+              It was advertised to an audience of 100 users, and {numBuyers} users bought your product.
+            </p>
+            <p> 
+              You earned ${priceOfProduct - productionCost} per product x {numBuyers} units sold = {salesCount} points in sales.
+            </p><br/>
+            <p> Your score for this round is: {salesCount} </p>
+            <p> Your total score is: {salesCount + currentScore} </p><br/>
+            <p> 
+              Click to proceed to the next round to sell products in this marketplace.
+            </p>
+          </div>
+          <Button handleClick={handleSubmit} primary>
+            I'm done!
+          </Button>
+        </div>
+      );
+    }
+  } else if (warrantChoice === 'Yes' && playerWarrantChallenge === false) {
+    return (
+      <div className="mt-3 sm:mt-5 p-20">
+        <h1 className="text-lg leading-6 font-medium text-gray-900">
+          Sales
+        </h1>
+        <div className="text-lg mt-2 mb-6">
+          {/* <p className="text-sm text-gray-500"> */}
+          <p>
+            You chose to produce a <b>{productionQuality}</b> quality product.
+          </p>
+          <p>
+            You chose to advertise it as a <b>{advertisementQuality}</b> quality product. You sold it at a price of <b>${priceOfProduct}</b>.
+          <br /> <br />
+          </p>
+
+          <img src={imageUrl} alt="Toothpaste Standard" width="250" height="250"/>
+
+          <p>
+            It was advertised to an audience of 100 users, and {numBuyers} users bought your product.
+          </p>
+          <p> 
+            You earned ${priceOfProduct - productionCost} per product x {numBuyers} units sold = {salesCount} points in sales.
+          </p><br/>
+          <p> Your score for this round is: {salesCount} </p>
+          <p> Your total score is: {salesCount + currentScore} </p><br/>
+          <p> 
+            Click to proceed to the next round to sell products in this marketplace.
+          </p>
+        </div>
+        <Button handleClick={handleSubmit} primary>
+          I'm done!
+        </Button>
+      </div>
+    );
+  }
+  
+
+
+
+
+
+
+//        {warrantChoice=="Yes" && <p> Since you decided to warrant this product, you will be charged $100. </p>}.
+
+
+
+//   return (
+//     <div className="mt-3 sm:mt-5 p-20">
+//       <h1 className="text-lg leading-6 font-medium text-gray-900">
+//         Sales
+//       </h1>
+//       <div className="text-lg mt-2 mb-6">
+//         {/* <p className="text-sm text-gray-500"> */}
+//         <p>
+//           You chose to produce a <b>{productionQuality}</b> quality product.
+//         </p>
+//         <p>
+//           You chose to advertise it as a <b>{advertisementQuality}</b> quality product.
+//         You sold it at a price of <b>${priceOfProduct}</b>.
+//         <br /> <br />
+//         </p>
+
+//         <img src={imageUrl} alt="Toothpaste Standard" width="250" height="250"/>
 
         
-        <p>
-          It was advertised to an audience of 100 users, and {numBuyers} users bought your product.
-        </p>
-        <p> 
-          
-          You earned ${priceOfProduct - productionCost}  per product x {numBuyers} units sold = {salesCount} points in sales.
-        </p><br/>
-        <p> Your score for this round is: {salesCount} </p>
-        <p> Your total score is: {salesCount + currentScore} </p><br/>
-        <p> 
-          Click to proceed to the next round to sell products in this marketplace.
-        </p>
-      </div>
-      <Button handleClick={handleSubmit} primary>
-        I'm done!
-      </Button>
-    </div>
-  );
-}
+//         <p>
+//           It was advertised to an audience of 100 users, and {numBuyers} users bought your product.
+//         </p>
+//         <p> 
+//           You earned ${priceOfProduct - productionCost} per product x {numBuyers} units sold = {salesCount} points in sales.
+//         </p><br/>
+//         <p> Your score for this round is: {salesCount} </p>
+//         <p> Your total score is: {salesCount + currentScore} </p><br/>
+//         <p> 
+//           Click to proceed to the next round to sell products in this marketplace.
+//         </p>
+//       </div>
+//       <Button handleClick={handleSubmit} primary>
+//         I'm done!
+//       </Button>
+//     </div>
+//   );
+// }
