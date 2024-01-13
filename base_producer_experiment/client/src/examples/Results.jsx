@@ -64,9 +64,9 @@ export function SalesResults({roundNumber}) {
   const numBuyers = Math.floor((Math.random() * (max - min) + min)) ;
 
   // salesCount = current ROUND score
-  const salesCount = numBuyers * (priceOfProduct - productionCost);
+  const salesCount = numBuyers * (priceOfProduct - productionCost) - warrantPrice;
   // finalscore = previous round score + current round score - warrant price
-  let finalScore = currentScore + salesCount - warrantPrice;
+  let finalScore = currentScore + salesCount;
 
 
   function handleSubmit() {
