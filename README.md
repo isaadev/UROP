@@ -17,8 +17,8 @@ For details on our progress, check out the [Experiment Roadmap](https://github.c
 
   
 
-
-# Short Answer #1 (Feature Implementation)
+# Short Answer Responses
+## Short Answer #1 (Feature Implementation)
 
 In order to plan the feature, I first sought to understand what the application was doing along with the overall goal of the application. Since Empirica is essentially the base on which this application is built, I read the Empirica documentation to understand what the exact purpose of Empirica is and why it was chosen for this application. Through my exploration of Empirica, I gained a comprehensive understanding of the game's lifecycle within this framework and key aspects such as rounds, stages, and batches. After grasping the fundamental aspects and goal of Empirica, I then focused my efforts on React since I have limited experience with it. I looked into the basics of React (via React documentation) so that I would be able to understand more when going into the codebase. In this search, I learned about topics such as component-based architecture, states, and hooks. Upon analyzing the codebase, I made a separate document to take notes on what some files in the project were doing (mainly .jsx files and server files) which then allowed me to figure out where in the code this new feature would be implemented and how it would flow with the rest of the application. I found it useful to omit or add bits of code and rerun the game to see what bits of code are reliant on others or build off of others.
 
@@ -28,13 +28,13 @@ Firstly, I started by adding another section in Advertise.jsx for the producer t
 
 Below I have linked the references I used to help me with implementing this feature:
 
-[Empirica Docs](https://docs.empirica.ly/overview/lifecycle) \n
+* [Empirica Docs](https://docs.empirica.ly/overview/lifecycle)
 
-[React Learn](https://react.dev/learn)
+* [React Learn](https://react.dev/learn)
 
-[React Tic-tac-toe](https://react.dev/learn/tutorial-tic-tac-toe#passing-data-through-props)
+* [React Tic-tac-toe](https://react.dev/learn/tutorial-tic-tac-toe#passing-data-through-props)
 
-# Short Answer #2 (Real-world)
+## Short Answer #2 (Real-world)
 
 As it pertains to the significance and how the warrant is reflective of a real-world marketplace, it highlights the idea of verification or guarantee. In the real world, to resell an expensive item, a person may send their item to a reseller who will check to guarantee or vouch that the item is authentic and as advertised. Then, the reseller would earn a commission on their sale for verifying the item. In a similar sense, the warrant feature here is used to ensure that the producer is honest in advertising their product quality, essentially acting as a trust mechanism. In order to consider all the cases the warrant feature could imply, I created a tree diagram as shown below. 
 
