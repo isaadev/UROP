@@ -93,7 +93,7 @@ export function SalesResults({roundNumber}) {
 
             <p>
               It was advertised to an audience of 100 users, and {numBuyers} users bought your product.
-            </p>
+            </p>    
             <p> 
               You earned ${priceOfProduct - productionCost} per product x {numBuyers} units sold = {salesCount} points in sales.
             </p><br/>
