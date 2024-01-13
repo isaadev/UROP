@@ -145,7 +145,7 @@ export function SalesResults({roundNumber}) {
             <p><strong>Since you correctly advertised your product's quality, you will receive your warrant money along with a bonus.</strong></p>
             <br />
             
-            <p> Your score for this round is: {salesCount} </p>
+            <p> Your score for this round is: {salesCount + (salesCount * 0.2)}. This includes the 20% bonus. </p>
             <p> Your total score is: {salesCount + currentScore} </p><br/>
             <p> 
               Click to proceed to the next round to sell products in this marketplace.
