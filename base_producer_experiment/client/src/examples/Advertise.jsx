@@ -248,7 +248,7 @@ import {
     )
   }
 
- 
+  // component for the warrant button
   function WarrantButton({text, warrantChoice, on_button_click}){
     return(
       <Button handleClick={on_button_click} >

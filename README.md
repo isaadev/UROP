@@ -27,8 +27,11 @@ From this point, I began brainstorming the warrant feature, thinking of the inte
 Firstly, I started by adding another section in Advertise.jsx for the producer to choose whether they would like to warrant their product for a fixed price. This included a prompt along with a button for the producer to give their input. After making sure that their choice would be saved using console logs, I focused on conditional rendering of the resulting score in Results.jsx. This included grabbing the warrant choice, generating whether the player challenges the warrant or not, and considering these two factors to render a react component which generates a score for the round. Since I was confused about some variable names and to keep track of what I had already implemented, I made sure to comment on parts I did not understand for clarification.
 
 Below I have linked the references I used to help me with implementing this feature:
-[Empirica Docs](https://docs.empirica.ly/overview/lifecycle)
+
+[Empirica Docs](https://docs.empirica.ly/overview/lifecycle) \n
+
 [React Learn](https://react.dev/learn)
+
 [React Tic-tac-toe](https://react.dev/learn/tutorial-tic-tac-toe#passing-data-through-props)
 
 # Short Answer #2 (Real-world)

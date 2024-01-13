@@ -22,6 +22,8 @@ export function SalesResults({roundNumber}) {
   // if not, then player cannot challenge
   console.log("warrantChoice value before if statement: ", warrantChoice);
 
+  // if warrantChoice is yes, then we set warrantPrice to 100 
+  // and generate a random number to see if the player is challenged
   if (warrantChoice === 'Yes') {
     console.log("Inside warrantChoice === 'Yes'");
     warrantPrice = 100;
