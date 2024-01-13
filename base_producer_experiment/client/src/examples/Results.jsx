@@ -63,6 +63,7 @@ export function SalesResults({roundNumber}) {
 
   // salesCount = current ROUND score
   const salesCount = numBuyers * (priceOfProduct - productionCost);
+  // finalscore = previous round score + current round score - warrant price
   let finalScore = currentScore + salesCount - warrantPrice;
 
 
@@ -71,6 +72,7 @@ export function SalesResults({roundNumber}) {
     player.stage.set("submit", true);
     player.set("score", finalScore);
   }
+  // if warrantChoice is no, then the player cannot challenge warrant
   if (warrantChoice === 'No') {
     console.log('getting there', warrantChoice);
     finalScore = currentScore + salesCount;
@@ -113,7 +115,8 @@ export function SalesResults({roundNumber}) {
   } else if (warrantChoice === 'Yes' && playerWarrantChallenge === true) {
     // if the qualities are equal
     if (productionQuality === advertisementQuality) {
-      finalScore = currentScore + salesCount + (salesCount * 0.2);
+      // receive warrant money + 20% of sales
+      finalScore = currentScore + salesCount + warrantPrice + (salesCount * 0.2);
       return (
         <div className="mt-3 sm:mt-5 p-20">
           <h1 className="text-lg leading-6 font-medium text-gray-900">
@@ -153,7 +156,7 @@ export function SalesResults({roundNumber}) {
       );
       // if the prod quality is higher than advertisement quality, then the producer only receives the warrant money 
     } else if (productionQuality === 'high' && advertisementQuality === 'low') {
-        finalScore = currentScore + salesCount;
+        finalScore = currentScore + salesCount + warrantPrice;
         return (
           <div className="mt-3 sm:mt-5 p-20">
             <h1 className="text-lg leading-6 font-medium text-gray-900">
@@ -235,7 +238,7 @@ export function SalesResults({roundNumber}) {
       }
     // if the player does not challenge the warrant, then the producer just gets back the warrant money
   } else if (warrantChoice === 'Yes' && playerWarrantChallenge === false) {
-    finalScore = currentScore + salesCount;
+    finalScore = currentScore + salesCount + warrantPrice;
       return (
         <div className="mt-3 sm:mt-5 p-20">
           <h1 className="text-lg leading-6 font-medium text-gray-900">
